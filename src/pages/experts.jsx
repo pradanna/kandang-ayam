@@ -329,8 +329,7 @@ const Experts = () => {
                     {selectedExpert.experience}
                   </p>
                   <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                    Berpengalaman dalam menangani peternakan komersial skala
-                    besar.
+                    Berpengalaman dalam menangani useran komersial skala besar.
                   </p>
                 </div>
                 <div className="pt-4 border-t border-slate-100">
@@ -487,7 +486,7 @@ const Experts = () => {
                   />
                 </div>
                 <p className="text-[10px] text-slate-400 italic">
-                  User harus sudah memiliki akun Member/Owner untuk didaftarkan
+                  User harus sudah memiliki akun Member/user untuk didaftarkan
                   sebagai Ahli.
                 </p>
               </div>

@@ -56,7 +56,7 @@ const ACTIVITY_LOGS = [
   {
     id: 1,
     admin: "Admin Utama",
-    action: "Menyetujui pendaftaran Owner: Berkah Farm",
+    action: "Menyetujui pendaftaran user: Berkah Farm",
     time: "2 jam yang lalu",
   },
   {
@@ -74,7 +74,7 @@ const ACTIVITY_LOGS = [
 ];
 
 const PERMISSIONS = [
-  "Manajemen Owner",
+  "Manajemen user",
   "Moderasi Komunitas",
   "Katalog Produk",
   "Verifikasi & Laporan",

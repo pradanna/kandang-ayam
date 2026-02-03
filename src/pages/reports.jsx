@@ -27,17 +27,17 @@ import {
 const VERIFICATION_REQUESTS = [
   {
     id: 1,
-    owner: "Budi Santoso",
+    user: "Budi Santoso",
     storeName: "Berkah Farm Sejahtera",
     date: "2024-02-01",
     status: "Pending",
     nib: "1234567890123",
     address: "Blitar, Jawa Timur",
-    docs: ["KTP_Budi.jpg", "NIB_Berkah.pdf", "Foto_Kandang.jpg"],
+    docs: ["KTP_Budi.jpg", "NIB_Berkah.pdf"],
   },
   {
     id: 2,
-    owner: "Siti Aminah",
+    user: "Siti Aminah",
     storeName: "Siti Poultry Shop",
     date: "2024-01-31",
     status: "Resolved",
@@ -47,7 +47,7 @@ const VERIFICATION_REQUESTS = [
   },
   {
     id: 3,
-    owner: "Joko Widjaja",
+    user: "Joko Widjaja",
     storeName: "Joko Layer Farm",
     date: "2024-01-28",
     status: "Rejected",
@@ -141,7 +141,7 @@ const Reports = () => {
               : "text-slate-500 hover:text-slate-700"
           }`}
         >
-          <ShieldCheck size={18} /> Verifikasi Penjual
+          <ShieldCheck size={18} /> Verifikasi Official Store
           <span className="ml-1 bg-teal-100 text-teal-700 text-[10px] px-1.5 py-0.5 rounded-full">
             {VERIFICATION_REQUESTS.filter((v) => v.status === "Pending").length}
           </span>
@@ -169,7 +169,7 @@ const Reports = () => {
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200 text-xs uppercase text-slate-500 font-semibold tracking-wider">
-                  <th className="px-6 py-4">Toko / Owner</th>
+                  <th className="px-6 py-4">Toko / user</th>
                   <th className="px-6 py-4">Tanggal Request</th>
                   <th className="px-6 py-4 text-center">Dokumen</th>
                   <th className="px-6 py-4">Status</th>
@@ -191,7 +191,7 @@ const Reports = () => {
                           <p className="text-sm font-bold text-slate-800">
                             {req.storeName}
                           </p>
-                          <p className="text-xs text-slate-500">{req.owner}</p>
+                          <p className="text-xs text-slate-500">{req.user}</p>
                         </div>
                       </div>
                     </td>
@@ -316,7 +316,7 @@ const Reports = () => {
                   <ShieldCheck size={24} />
                 </div>
                 <h3 className="font-bold text-slate-800 text-xl">
-                  Review Verifikasi Penjual
+                  Review Verifikasi Official Store
                 </h3>
               </div>
               <button
@@ -340,7 +340,7 @@ const Reports = () => {
                     {selectedVerification.address}
                   </p>
                 </div>
-                <div>
+                {/* <div>
                   <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                     Nomor Izin Bisnis (NIB)
                   </label>
@@ -350,7 +350,7 @@ const Reports = () => {
                     </p>
                     <CheckCircle size={14} className="text-emerald-500" />
                   </div>
-                </div>
+                </div> */}
                 <div>
                   <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                     Dokumen Terlampir
@@ -373,18 +373,11 @@ const Reports = () => {
               </div>
 
               <div className="space-y-4">
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                  Preview Foto Lokasi
-                </label>
-                <div className="w-full h-40 bg-slate-100 rounded-2xl border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-slate-400">
-                  <Store size={40} className="mb-2 opacity-20" />
-                  <p className="text-xs italic">Simulasi: Foto Kandang/Toko</p>
-                </div>
                 <div className="bg-blue-50 p-4 rounded-xl border border-blue-100 flex gap-3">
                   <Info size={20} className="text-blue-500 shrink-0" />
                   <p className="text-xs text-blue-700 leading-relaxed">
-                    Pastikan NIB valid dan foto kandang sesuai dengan alamat
-                    yang didaftarkan sebelum menyetujui.
+                    Pastikan NIB valid sesuai dengan yang didaftarkan sebelum
+                    menyetujui.
                   </p>
                 </div>
               </div>

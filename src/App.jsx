@@ -11,6 +11,7 @@ import Reports from "./pages/reports";
 import Experts from "./pages/experts";
 import Admins from "./pages/admins";
 import Data from "./pages/data";
+import DataExportPage from "./pages/DataExportPage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/experts" element={<Experts />} />
           <Route path="/admins" element={<Admins />} />
           <Route path="/data" element={<Data />} />
+          <Route path="/export-data" element={<DataExportPage />} />
         </Routes>
       </main>
     </div>

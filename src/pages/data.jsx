@@ -284,23 +284,16 @@ const DataReports = () => {
                   </h3>
                 </div>
               </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
-                <div>
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                    Ekspor Cepat
-                  </p>
-                  <div className="flex gap-2 mt-3">
-                    <button className="p-2 bg-emerald-50 text-emerald-600 rounded-lg hover:bg-emerald-100 transition-colors">
-                      <FileSpreadsheet size={18} />
-                    </button>
-                    <button className="p-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors">
-                      <FileText size={18} />
-                    </button>
-                  </div>
-                </div>
-                <Users size={32} className="text-slate-100" />
+              <div className="flex flex-col gap-2">
+                <button className="flex-1 bg-emerald-600 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-emerald-700 transition-all">
+                  <FileSpreadsheet size={18} /> Export Excel (XLS)
+                </button>
+                <button className="flex-1 bg-red-600 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-red-700 transition-all">
+                  <FileText size={18} /> Export PDF (PDF)
+                </button>
               </div>
             </div>
+            <Users size={32} className="text-slate-100" />
 
             <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
               <div className="p-6 border-b border-slate-50 flex justify-between items-center">
@@ -317,7 +310,7 @@ const DataReports = () => {
                     <th className="px-6 py-4">Nama User</th>
                     <th className="px-6 py-4">Tgl Bergabung</th>
                     <th className="px-6 py-4">Status Akun</th>
-                    <th className="px-6 py-4">Activity Score</th>
+                    {/* <th className="px-6 py-4">Activity Score</th> */}
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-50 text-sm">
@@ -328,9 +321,9 @@ const DataReports = () => {
                       </td>
                       <td className="px-6 py-4 text-slate-500">{u.joinDate}</td>
                       <td className="px-6 py-4">{renderStatus(u.status)}</td>
-                      <td className="px-6 py-4 font-mono font-bold text-teal-600">
+                      {/* <td className="px-6 py-4 font-mono font-bold text-teal-600">
                         {u.activityScore}%
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
                 </tbody>
@@ -342,7 +335,7 @@ const DataReports = () => {
         {/* --- TAB KANDANG --- */}
         {activeTab === "kandang" && (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm col-span-2">
                 <h4 className="text-[10px] font-bold text-slate-400 uppercase mb-4 tracking-widest">
                   Distribusi Wilayah
@@ -368,19 +361,19 @@ const DataReports = () => {
                   ))}
                 </div>
               </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-center items-center text-center">
+              {/* <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-center items-center text-center">
                 <Activity className="text-teal-500 mb-2" size={24} />
                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                   Kepatuhan Input
                 </p>
                 <h3 className="text-2xl font-bold text-slate-900">82%</h3>
-              </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-center items-center text-center">
-                <button className="w-full py-3 bg-indigo-50 text-indigo-700 rounded-xl font-bold text-xs flex items-center justify-center gap-2 mb-2">
-                  <FileSpreadsheet size={16} /> Analytics (XLS)
+              </div> */}
+              <div className="flex flex-col gap-2">
+                <button className="flex-1 bg-emerald-600 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-emerald-700 transition-all">
+                  <FileSpreadsheet size={18} /> Export Leads (XLS)
                 </button>
-                <button className="w-full py-3 bg-red-50 text-red-700 rounded-xl font-bold text-xs flex items-center justify-center gap-2">
-                  <FileText size={16} /> Regional (PDF)
+                <button className="flex-1 bg-red-600 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-red-700 transition-all">
+                  <FileText size={18} /> Export Performance (PDF)
                 </button>
               </div>
             </div>
@@ -393,7 +386,7 @@ const DataReports = () => {
                     <th className="px-6 py-4">Lokasi</th>
                     <th className="px-6 py-4">Jumlah Kandang</th>
                     <th className="px-6 py-4">Input Terakhir</th>
-                    <th className="px-6 py-4">Compliance</th>
+                    {/* <th className="px-6 py-4">Compliance</th> */}
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-50 text-sm">
@@ -407,9 +400,9 @@ const DataReports = () => {
                       <td className="px-6 py-4 text-slate-500">
                         {c.lastInput}
                       </td>
-                      <td className="px-6 py-4">
+                      {/* <td className="px-6 py-4">
                         {renderStatus(c.compliance)}
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
                 </tbody>
@@ -422,7 +415,7 @@ const DataReports = () => {
         {activeTab === "komunitas" && (
           <>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
+              {/* <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
                 <div className="p-3 bg-purple-50 text-purple-600 rounded-xl">
                   <Award size={24} />
                 </div>
@@ -432,7 +425,7 @@ const DataReports = () => {
                   </p>
                   <h3 className="text-xl font-bold text-slate-900">32 Menit</h3>
                 </div>
-              </div>
+              </div> */}
               <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
                 <div className="p-3 bg-red-50 text-red-600 rounded-xl">
                   <AlertCircle size={24} />
@@ -444,17 +437,13 @@ const DataReports = () => {
                   <h3 className="text-xl font-bold text-slate-900">12 Post</h3>
                 </div>
               </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
-                <div>
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                    Export Community
-                  </p>
-                  <div className="flex gap-2 mt-3">
-                    <button className="px-4 py-2 bg-purple-50 text-purple-700 rounded-xl text-xs font-bold flex items-center gap-2">
-                      <FileSpreadsheet size={14} /> engagement.csv
-                    </button>
-                  </div>
-                </div>
+              <div className="flex flex-col gap-2">
+                <button className="flex-1 bg-emerald-600 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-emerald-700 transition-all">
+                  <FileSpreadsheet size={18} /> Export Leads (XLS)
+                </button>
+                <button className="flex-1 bg-red-600 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-red-700 transition-all">
+                  <FileText size={18} /> Export Performance (PDF)
+                </button>
               </div>
             </div>
 
@@ -468,7 +457,7 @@ const DataReports = () => {
                     <th className="px-6 py-4">Topik</th>
                     <th className="px-6 py-4">Kategori</th>
                     <th className="px-6 py-4">Engagement (Points)</th>
-                    <th className="px-6 py-4">Expert Respon Time</th>
+                    {/* <th className="px-6 py-4">Expert Respon Time</th> */}
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-50 text-sm">
@@ -485,9 +474,9 @@ const DataReports = () => {
                       <td className="px-6 py-4 font-mono font-bold text-purple-600">
                         {t.engagement.toLocaleString()}
                       </td>
-                      <td className="px-6 py-4 font-bold">
+                      {/* <td className="px-6 py-4 font-bold">
                         {t.expertResponse}
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
                 </tbody>
@@ -515,7 +504,7 @@ const DataReports = () => {
                   </span>
                 </h3>
               </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-center">
+              {/* <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-center">
                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                   Conversion Potential
                 </p>
@@ -525,14 +514,14 @@ const DataReports = () => {
                 <p className="text-[10px] text-slate-400 italic">
                   *Estimasi berdasarkan rata-rata harga produk yang diklik.
                 </p>
-              </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-center items-center">
+              </div> */}
+              {/* <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-center items-center">
                 <Share2 className="text-indigo-500 mb-2" size={24} />
                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                   Unique Lead Origin
                 </p>
                 <h3 className="text-xl font-bold text-slate-800">42 Wilayah</h3>
-              </div>
+              </div> */}
               <div className="flex flex-col gap-2">
                 <button className="flex-1 bg-emerald-600 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-emerald-700 transition-all">
                   <FileSpreadsheet size={18} /> Export Leads (XLS)
@@ -559,7 +548,7 @@ const DataReports = () => {
                     <th className="px-6 py-4">Nama Produk</th>
                     <th className="px-6 py-4">Penjual</th>
                     <th className="px-6 py-4">Jumlah Klik (WA)</th>
-                    <th className="px-6 py-4">Potensi Konversi</th>
+                    {/* <th className="px-6 py-4">Potensi Konversi</th> */}
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-50 text-sm">
@@ -572,7 +561,7 @@ const DataReports = () => {
                       <td className="px-6 py-4 font-mono font-bold text-teal-600">
                         {m.clicks.toLocaleString()}
                       </td>
-                      <td className="px-6 py-4">{renderStatus(m.potential)}</td>
+                      {/* <td className="px-6 py-4">{renderStatus(m.potential)}</td> */}
                     </tr>
                   ))}
                 </tbody>

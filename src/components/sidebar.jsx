@@ -12,19 +12,21 @@ import {
   FileText,
   LogOut,
   Crown,
+  ArrowUp01Icon,
+  ArrowUpIcon,
 } from "lucide-react";
 
 const Sidebar = () => {
   const navItems = [
     { name: "Dashboard", path: "/", icon: Home },
     { name: "Manajemen Pendaftar", path: "/registrations", icon: UserPlus },
-    { name: "Manajemen Owner", path: "/owner", icon: Briefcase }, // Sesuaikan path dengan App.jsx Anda (/owner)
     { name: "Moderasi Komunitas", path: "/community", icon: MessageSquare },
     { name: "Katalog Produk", path: "/products", icon: ShoppingBag },
     { name: "Verifikasi & Laporan", path: "/reports", icon: ShieldAlert },
     { name: "Tenaga Ahli", path: "/experts", icon: Award },
     { name: "Manajemen Admin", path: "/admins", icon: Users },
     { name: "Data & Laporan", path: "/data", icon: FileText },
+    { name: "Export Data", path: "/export-data", icon: ArrowUpIcon },
   ];
 
   return (

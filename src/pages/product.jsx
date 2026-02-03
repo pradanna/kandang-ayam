@@ -20,6 +20,7 @@ import {
   FileText,
   User, // Menambahkan User yang sebelumnya terlewat
 } from "lucide-react";
+import ProductDetailModal from "../components/ProductDetailModal";
 
 // --- DATA DUMMY ---
 const INITIAL_PRODUCTS = [
@@ -27,7 +28,7 @@ const INITIAL_PRODUCTS = [
     id: 1,
     name: "Pakan Ayam Broiler Premium",
     category: "Pakan",
-    owner: "Admin",
+    user: "Admin",
     phone: "-",
     clicks: 1250,
     isSponsor: true,
@@ -38,7 +39,7 @@ const INITIAL_PRODUCTS = [
     id: 2,
     name: "Vitamin Unggas Cair 1L",
     category: "Obat & Vitamin",
-    owner: "Budi Santoso",
+    user: "Budi Santoso",
     phone: "08123456789",
     clicks: 980,
     isSponsor: false,
@@ -49,7 +50,7 @@ const INITIAL_PRODUCTS = [
     id: 3,
     name: "Wadah Pakan Otomatis K-5",
     category: "Peralatan",
-    owner: "Toko Ternak Jaya",
+    user: "Toko Ternak Jaya",
     phone: "08198765432",
     clicks: 450,
     isSponsor: true,
@@ -60,7 +61,7 @@ const INITIAL_PRODUCTS = [
     id: 4,
     name: "DOC Ayam Petelur Platinum",
     category: "Bibit",
-    owner: "Admin",
+    user: "Admin",
     phone: "-",
     clicks: 2100,
     isSponsor: false,
@@ -71,7 +72,7 @@ const INITIAL_PRODUCTS = [
     id: 5,
     name: "Vaksin ND-AI 500 Dosis",
     category: "Obat & Vitamin",
-    owner: "Agus Pratama",
+    user: "Agus Pratama",
     phone: "08561122334",
     clicks: 320,
     isSponsor: false,
@@ -82,7 +83,7 @@ const INITIAL_PRODUCTS = [
     id: 6,
     name: "Lampu Penghangat IR",
     category: "Peralatan",
-    owner: "Siti Aminah",
+    user: "Siti Aminah",
     phone: "08130099887",
     clicks: 150,
     isSponsor: false,
@@ -93,7 +94,7 @@ const INITIAL_PRODUCTS = [
     id: 7,
     name: "Pakan Starter Repacking",
     category: "Pakan",
-    owner: "Rahmat H.",
+    user: "Rahmat H.",
     phone: "08776655443",
     clicks: 85,
     isSponsor: false,
@@ -105,13 +106,16 @@ const INITIAL_PRODUCTS = [
 const CATEGORIES = ["Pakan", "Obat & Vitamin", "Peralatan", "Bibit"];
 
 const Products = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
   // --- States ---
   const [products, setProducts] = useState(INITIAL_PRODUCTS);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showTCModal, setShowTCModal] = useState(false);
   const [showStatsModal, setShowStatsModal] = useState(false);
   const [tcContent, setTcContent] = useState(
-    "1. Semua produk harus berkaitan dengan peternakan.\n2. Foto produk dilarang mengandung unsur SARA.\n3. Penjual bertanggung jawab penuh atas keaslian produk.",
+    "1. Semua produk harus berkaitan dengan useran.\n2. Foto produk dilarang mengandung unsur SARA.\n3. Penjual bertanggung jawab penuh atas keaslian produk.",
   );
 
   // Filter States
@@ -121,6 +125,11 @@ const Products = () => {
     category: "Semua",
     phone: "",
   });
+
+  const handleOpenDetailProduct = () => {
+    setSelectedProduct(dummyProductData);
+    setIsOpen(true);
+  };
 
   // --- Logika ---
   const popularProducts = [...products]
@@ -151,7 +160,7 @@ const Products = () => {
     const matchesName = p.name
       .toLowerCase()
       .includes(filters.name.toLowerCase());
-    const matchesUser = p.owner
+    const matchesUser = p.user
       .toLowerCase()
       .includes(filters.user.toLowerCase());
     const matchesPhone = p.phone.includes(filters.phone);
@@ -159,6 +168,27 @@ const Products = () => {
       filters.category === "Semua" || p.category === filters.category;
     return matchesName && matchesUser && matchesPhone && matchesCategory;
   });
+
+  const dummyProductData = {
+    id: "PROD-123",
+    name: "Pakan Ayam Petelur High Quality (50kg)",
+    category: "Pakan Ternak",
+    price: 485000,
+    stock: 120,
+    isSponsor: true, // Jika true, muncul badge sponsor
+    description:
+      "Pakan konsentrat khusus untuk ayam petelur fase layer. Mengandung protein 18% dan kalsium tinggi untuk memaksimalkan kualitas cangkang telur. Produksi meningkat hingga 15% dalam 2 minggu pemakaian.",
+    stats: {
+      waClicks: 142, // "Seberapa laris" indikator
+      views: 3500,
+    },
+    store: {
+      name: "Toko Tani Makmur Jaya",
+      location: "Blitar, Jawa Timur",
+      joinDate: "Jan 2023",
+      isVerified: true,
+    },
+  };
 
   return (
     <div className="p-8 min-h-screen bg-slate-50 font-sans text-slate-800">
@@ -290,7 +320,7 @@ const Products = () => {
               <tr className="bg-slate-50 border-b border-slate-200 text-xs uppercase text-slate-500 font-semibold tracking-wider">
                 <th className="px-6 py-4">Produk</th>
                 <th className="px-6 py-4">Kategori</th>
-                <th className="px-6 py-4">Owner / Uploader</th>
+                <th className="px-6 py-4">user / Uploader</th>
                 <th className="px-6 py-4 text-center">Status Sponsor</th>
                 <th className="px-6 py-4 text-right">Aksi</th>
               </tr>
@@ -319,9 +349,9 @@ const Products = () => {
                   <td className="px-6 py-4">
                     <div className="flex flex-col">
                       <span
-                        className={`text-sm font-semibold ${p.owner === "Admin" ? "text-teal-600" : "text-slate-800"}`}
+                        className={`text-sm font-semibold ${p.user === "Admin" ? "text-teal-600" : "text-slate-800"}`}
                       >
-                        {p.owner}
+                        {p.user}
                       </span>
                       {p.phone !== "-" && (
                         <span className="text-xs text-slate-400 flex items-center gap-1 mt-0.5">
@@ -355,7 +385,7 @@ const Products = () => {
                       >
                         <Zap size={18} />
                       </button>
-                      {p.owner === "Admin" && (
+                      {p.user === "Admin" && (
                         <button
                           className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                           title="Edit"
@@ -369,6 +399,13 @@ const Products = () => {
                         title="Hapus"
                       >
                         <Trash size={18} />
+                      </button>
+
+                      <button
+                        onClick={() => handleOpenDetailProduct()}
+                        className="text-xs font-bold text-teal-600 bg-teal-50 px-3 py-1.5 rounded-lg hover:bg-teal-100 transition-colors"
+                      >
+                        Detail
                       </button>
                     </div>
                   </td>
@@ -525,7 +562,7 @@ const Products = () => {
                         <p className="text-sm font-bold text-slate-800">
                           {p.name}
                         </p>
-                        <p className="text-[10px] text-slate-400">{p.owner}</p>
+                        <p className="text-[10px] text-slate-400">{p.user}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-1.5 text-teal-600 font-bold">
@@ -538,6 +575,12 @@ const Products = () => {
           </div>
         </div>
       )}
+
+      <ProductDetailModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        product={selectedProduct}
+      />
     </div>
   );
 };

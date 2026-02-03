@@ -13,17 +13,22 @@ import {
 // --- DUMMY DATA ---
 
 const METRICS = {
-  totalOwners: 5050,
-  proOwners: 850,
-  freeOwners: 4200,
+  totalusers: 5050,
+  prousers: 850,
+  freeusers: 4200,
   totalCoops: 12450,
   pendingRegistrations: 15,
   urgentActions: 8, // Combined reports + verifications
 };
 
 const PENDING_APPLICANTS = [
-  { id: 1, name: "Budi Santoso", type: "Owner", date: "2 jam yang lalu" },
-  { id: 2, name: "CV. Ternak Makmur", type: "Owner", date: "5 jam yang lalu" },
+  { id: 1, name: "Budi Santoso", type: "user", date: "2 jam yang lalu" },
+  {
+    id: 2,
+    name: "CV. Ternak Makmur",
+    type: "user",
+    date: "5 jam yang lalu",
+  },
   {
     id: 3,
     name: "Drh. Siti Aminah",
@@ -72,26 +77,26 @@ const Dashboard = () => {
 
       {/* 2. Top Metric Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        {/* Card 1: Total Owner */}
+        {/* Card 1: Total user */}
         <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex flex-col justify-between h-36 relative overflow-hidden group hover:shadow-md transition-shadow">
           <div className="absolute right-4 top-4 p-2 bg-teal-50 rounded-lg text-teal-600 group-hover:scale-110 transition-transform">
             <Users size={24} />
           </div>
           <div>
             <p className="text-sm font-medium text-slate-500">
-              Total Owner Aktif
+              Total User Aktif
             </p>
             <h3 className="text-3xl font-bold text-slate-900 mt-2">
-              {METRICS.totalOwners.toLocaleString()}
+              {METRICS.totalusers.toLocaleString()}
             </h3>
           </div>
           <div className="flex items-center gap-2 text-xs mt-2">
             <span className="font-bold text-teal-600 bg-teal-50 px-2 py-0.5 rounded border border-teal-100">
-              {METRICS.proOwners} PRO
+              {METRICS.prousers} PRO
             </span>
             <span className="text-slate-400">|</span>
             <span className="text-slate-500">
-              {METRICS.freeOwners.toLocaleString()} FREE
+              {METRICS.freeusers.toLocaleString()} FREE
             </span>
           </div>
         </div>
@@ -110,7 +115,7 @@ const Dashboard = () => {
             </h3>
           </div>
           <p className="text-xs text-slate-400 mt-2">
-            Data real-time dari seluruh owner
+            Data real-time dari seluruh user
           </p>
         </div>
 
