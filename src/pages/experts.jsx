@@ -195,7 +195,7 @@ const Experts = () => {
               <tr className="bg-slate-50 border-b border-slate-200 text-xs uppercase text-slate-500 font-semibold tracking-wider">
                 <th className="px-6 py-4">Profil Ahli</th>
                 <th className="px-6 py-4">Sertifikasi</th>
-                <th className="px-6 py-4 text-center">Reputasi</th>
+                {/* <th className="px-6 py-4 text-center">Reputasi</th> */}
                 <th className="px-6 py-4">Status</th>
                 <th className="px-6 py-4 text-right">Aksi</th>
               </tr>
@@ -227,7 +227,7 @@ const Experts = () => {
                       {expert.credentials}
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-center">
+                  {/* <td className="px-6 py-4 text-center">
                     <div className="flex items-center justify-center gap-1">
                       <Star
                         size={14}
@@ -244,7 +244,7 @@ const Experts = () => {
                         ({expert.contributions})
                       </span>
                     </div>
-                  </td>
+                  </td> */}
                   <td className="px-6 py-4">
                     {expert.status === "Verified" ? (
                       <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-100">
@@ -266,7 +266,7 @@ const Experts = () => {
                         <Eye size={18} />
                       </button>
                       <button className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">
-                        <MoreVertical size={18} />
+                        {/* <MoreVertical size={18} /> */}
                       </button>
                     </div>
                   </td>
